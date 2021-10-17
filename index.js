@@ -1,7 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const pageTemplate = require('./src/page-template.js');
+const Manager = require('./lib/Manager.js');
+const Engineer = require('./lib/Engineer.js');
 
+let team = [];
 
 const managerQuestions = [
     {
@@ -94,7 +97,8 @@ function init() {
         .prompt(managerQuestions)
         .then((responses) => {
             console.log(responses);
-            
+            let manager = new Manager (responses.managerName, responses.managerId, responses.email, responses.managerOffice)
+            team.push(manager);
             continueBuild()
         })
 };
@@ -111,9 +115,10 @@ function continueBuild() {
                 case 'Add intern':
                     addIntern();
                     break;
-                case 'Finsh building team':
+                case 'Finish building team':
                     console.log('done build');
-                    // fxn to write html file
+                    console.log(team);
+                    writeHtml(team)
                     break;
             }
         })
@@ -124,6 +129,8 @@ function addEngineer() {
     .prompt(engineerQ)
     .then((response) => {
         console.log(response);
+        const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub);
+        team.push(engineer);
         continueBuild();
     })
 }
@@ -133,30 +140,15 @@ function addIntern() {
     .prompt(internQ)
     .then((response) => {
         console.log(response);
+        const intern = new Intern(response.internName, response.internId, response.internEmail, response.internSchool);
+        team.push(intern);
         continueBuild();
     })
 }
 
-// function writeHtml() {
-//     fs.appendFile('what.html', pageTemplate, (err) =>                            // idk what 2nd param should be
-//     err ? console.error(err) : console.log('Successfully made file'));   
-// }
-
-// // given roles
-// manager
-// employee
-//     engineer
-//     intern
-
-// // given fxns
-// getName
-// getRole
-// getId
-// getEmail
-// getOfficeNumber
-// getGithub
-// getSchool
-
-
+function writeHtml(team) {
+    fs.appendFile('what.html', pageTemplate(team), (err) =>                            // idk what 2nd param should be
+    err ? console.error(err) : console.log('Successfully made file'));   
+}
 
 init();
