@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/jessicamcg/team-profile-generator/issues"
   },
-  "homepage": "https://github.com/jessicamcg/team-profile-generator#readme"
+  "homepage": "https://github.com/jessicamcg/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.2.5"
+  }
 }
