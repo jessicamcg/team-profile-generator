@@ -61,7 +61,16 @@ const engineerQ = [
     {
         type: 'input',
         message: "Enter the engineer's email:",
-        name: 'engineerEmail'
+        name: 'engineerEmail',
+        validate: function validate(email) {
+
+            const emailArr = email.split('');
+            if (emailArr.indexOf('@') !== -1) {
+                return true
+            } else {
+                return 'Invalid email. Try again' 
+            }
+        }
     },
     {
         type: 'input',
@@ -84,7 +93,16 @@ const internQ = [
     {
         type: 'input',
         message: "Enter the intern's email:",
-        name: 'internEmail'
+        name: 'internEmail',
+        validate: function validate(email) {
+
+            const emailArr = email.split('');
+            if (emailArr.indexOf('@') !== -1) {
+                return true
+            } else {
+                return 'Invalid email. Try again' 
+            }
+        }
     },
     {
         type: 'input',
@@ -142,7 +160,7 @@ function addIntern() {
 }
 
 function writeHtml(team) {
-    fs.writeFile('what.html', pageTemplate(team), (err) =>                            // idk what 2nd param should be
+    fs.writeFile('newteam.html', pageTemplate(team), (err) =>                           
     err ? console.error(err) : console.log('Successfully made file'));   
 }
 

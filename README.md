@@ -20,7 +20,11 @@ Using Jest to test the application:
 ```bash
 npm run test
 ```
-
+Tests:
+https://watch.screencastify.com/v/yEwes1ynSQ2f2a9gpy1K
+## Walkthrough
+This video assumes the user already installed inquirer:
+https://watch.screencastify.com/v/vQ1Oaz5S1krye9044dLu
 
 ## Technologies
 
