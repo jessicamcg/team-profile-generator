@@ -127,7 +127,6 @@ function addEngineer() {
     .then((response) => {
         const engineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub);
         team.push(engineer);
-        console.log();
         continueBuild();
     })
 }
